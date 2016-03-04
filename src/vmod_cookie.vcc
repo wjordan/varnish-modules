@@ -1,0 +1,10 @@
+$Module cookie 3 Varnish Cookie Module
+$Function VOID parse(PRIV_TASK, STRING)
+$Function VOID clean(PRIV_TASK)
+$Function VOID set(PRIV_TASK, STRING, STRING)
+$Function STRING get(PRIV_TASK, STRING)
+$Function BOOL isset(PRIV_TASK, STRING)
+$Function VOID delete(PRIV_TASK, STRING)
+$Function VOID filter_except(PRIV_TASK, STRING)
+$Function STRING get_string(PRIV_TASK)
+$Function STRING format_rfc1123(TIME, DURATION)

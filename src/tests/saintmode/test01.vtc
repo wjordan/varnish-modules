@@ -1,0 +1,94 @@
+varnishtest "Test saintmode vmod"
+
+server s1 {
+       rxreq
+       expect req.url == "/a"
+       txresp -hdr "Saint: yes"
+
+       accept
+       rxreq
+       expect req.url == "/b"
+       txresp
+
+       rxreq
+       expect req.url == "/a"
+       txresp
+
+       rxreq
+       expect req.url == "/sick-0"
+       txresp -hdr "Saint: yes"
+
+       accept
+       rxreq
+       expect req.url == "/sick-1"
+       txresp -hdr "Saint: yes"
+
+       accept
+       rxreq
+       expect req.url == "/sick-2"
+       txresp -hdr "Saint: yes"
+} -start
+
+varnish v1 -vcl+backend {
+	import saintmode from "${vmod_topbuild}/src/.libs/libvmod_saintmode.so";
+
+	sub vcl_init {
+		new sm = saintmode.saintmode(s1, 3);
+	}
+
+	sub vcl_recv {
+		return (pass);
+	}
+
+	sub vcl_backend_fetch {
+		set bereq.backend = sm.backend();
+	}
+
+	sub vcl_backend_response {
+		if (beresp.http.Saint == "yes") {
+			saintmode.blacklist(0.5s);
+			return (retry); # -> 503
+		}
+	}
+
+} -start
+
+client c1 {
+	txreq -url "/a"
+	rxresp
+	expect resp.status == 503
+
+	# Should fail outright due to /a being on troublelist
+	txreq -url "/a"
+	rxresp
+	expect resp.status == 503
+
+	txreq -url "/b"
+	rxresp
+	expect resp.status == 200
+
+	delay 0.5
+
+	txreq -url "/a"
+	rxresp
+	expect resp.status == 200
+
+	txreq -url "/sick-0"
+	rxresp
+	expect resp.status == 503
+
+	txreq -url "/sick-1"
+	rxresp
+	expect resp.status == 503
+
+	txreq -url "/sick-2"
+	rxresp
+	expect resp.status == 503
+
+	# saintmode threshold reached - should report 503 for all reqs
+	txreq -url "/foo"
+	rxresp
+	expect resp.status == 503
+}
+
+client c1 -run

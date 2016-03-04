@@ -1,0 +1,7 @@
+$Module header 3 Header VMOD for Varnish
+$Event event_function
+$Function VOID append(HEADER,STRING_LIST)
+$Function VOID remove(PRIV_CALL,HEADER,STRING)
+$Function STRING get(PRIV_CALL,HEADER,STRING)
+$Function VOID copy(HEADER,HEADER)
+$Function STRING version()
