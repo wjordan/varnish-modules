@@ -1,6 +1,6 @@
 This is a running log of changes to varnish-modules.
 
-varnish-modules 0.9.1 (unreleased)
+varnish-modules 0.9.0 (2014-03-04)
 ----------------------------------
 
 Initial release. This package contains the source files extracted from
