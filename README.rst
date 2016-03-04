@@ -1,15 +1,16 @@
-Varnish modules by Varnish Software
-===================================
+Varnish module collectino by Varnish Software
+=============================================
 
-This is a collection of modules ("vmods") extending Varnish VCL used for describing HTTP
-request/response policies with additional capabilities.
+This is a collection of modules ("vmods") extending Varnish VCL used for
+describing HTTP request/response policies with additional capabilities.
 
-Examples include:
+Included:
 
 * Simpler handling of HTTP cookies
 * Variable support
 * Request and bandwidth throttling
 * Modify and change complex HTTP headers
+* 3.0-style saint mode,
 * Advanced cache invalidations, and more.
 
 This collection contains the following vmods (previously kept individually):
@@ -33,8 +34,8 @@ Source code is built with autotools::
     make check
     make install
 
-The resulting loadable modules (``libvmod_foo*.so`` files) will be installed to the
-Varnish module directory. (default `/var/lib/varnish/vmods/`)
+The resulting loadable modules (``libvmod_foo*.so`` files) will be installed to
+the Varnish module directory. (default `/var/lib/varnish/vmods/`)
 
 
 Usage
