@@ -6,11 +6,6 @@ vmod_saintmode
 Varnish Saintmode Module
 ------------------------
 
-:Author: Dag Haavi Finstad
-:Date: 2015-12-01
-:Version: 1.0.1
-:Manual section: 3
-
 SYNOPSIS
 ========
 
@@ -141,28 +136,3 @@ Example
 		}
 
 	}
-
-INSTALLATION
-============
-
-The source tree is based on autotools to configure the building, and
-does also have the necessary bits in place to do functional unit tests
-using the varnishtest tool.
-
-Usage::
-
- ./configure
-
-Make targets:
-
-* make - builds the vmod
-* make install - installs your vmod
-* make check - runs the unit tests in ``src/tests/*.vtc``
-
-COPYRIGHT
-=========
-
-This document is licensed under the same license as the
-libvmod-saintmode project. See LICENSE for details.
-
-* Copyright (c) 2011-2015 Varnish Software

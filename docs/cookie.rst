@@ -6,11 +6,6 @@ vmod_cookie
 Varnish Cookie Module
 ----------------------
 
-:Author: Lasse Karstensen
-:Date: 2015-03-27
-:Version: 3.0.5+release
-:Manual section: 3
-
 SYNOPSIS
 ========
 
@@ -234,39 +229,3 @@ Example
 			set resp.http.Set-Cookie = "userid=" + req.http.userid + "; Expires=" + cookie.format_rfc1123(now, 5m) + "; httpOnly";
 		}
 
-
-INSTALLATION
-============
-
-The source tree is based on autotools to configure the building, and
-does also have the necessary bits in place to do functional unit tests
-using the varnishtest tool.
-
-Usage::
-
- ./configure --prefix=/usr
-
-Make targets:
-
-* make - builds the vmod
-* make install - installs the vmod.
-* make check - runs the unit tests in ``src/tests/*.vtc``
-
-In your VCL you could then use this vmod along the following lines::
-
-	import cookie;
-	sub vcl_recv {
-		cookie.parse(req.http.cookie);
-		cookie.filter_except("SESSIONID,PHPSESSID");
-		set req.http.cookie = cookie.get_string();
-	}
-
-
-COPYRIGHT
-=========
-
-This document is licensed under the same license as the
-libvmod-example project. See LICENSE for details.
-
-* Copyright (c) 2011-2013 Varnish Software
-* Copyright (c) 2013-2015 Lasse Karstensen

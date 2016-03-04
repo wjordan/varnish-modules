@@ -6,11 +6,6 @@ vmod_tcp
 Varnish TCP module
 ------------------
 
-:Author: Lasse Karstensen
-:Date: 2015-11-30
-:Version: 0.8
-:Manual section: 3
-
 SYNOPSIS
 ========
 
@@ -102,22 +97,8 @@ Example
                 }
 
 
-INSTALLATION
-============
-
-The source tree is based on autotools to configure the building, and
-does also have the necessary bits in place to do functional unit tests
-using the varnishtest tool.
-
-Usage::
-
- ./configure
-
-Make targets:
-
-* make - builds the vmod
-* make install - installs vmod
-* make check - runs the unit tests in ``src/tests/*.vtc``
+USAGE
+=====
 
 In your VCL you could then use this vmod along the following lines::
         

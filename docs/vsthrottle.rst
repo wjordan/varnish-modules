@@ -6,11 +6,6 @@ vmod_vsthrottle
 Varnish Throttling Module
 -------------------------
 
-:Author: Dag Haavi Finstad
-:Date: 2015-12-14
-:Version: 1.0.1
-:Manual section: 3
-
 SYNOPSIS
 ========
 
@@ -78,38 +73,6 @@ Example
 		}
 
 
-INSTALLATION
-============
-
-The source tree is based on autotools to configure the building, and
-does also have the necessary bits in place to do functional unit tests
-using the varnishtest tool.
-
-This VMOD is written for Varnish Cache 4.1.
-
-Pre-installation configuration::
-
- ./autogen.sh
- ./configure
-
-If you have installed Varnish to a non-standard directory, call
-``autogen.sh`` and ``configure`` with ``PKG_CONFIG_PATH`` pointing to
-the appropriate path. For example, when varnishd configure was called
-with ``--prefix=$PREFIX``, use
-
- PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
- export PKG_CONFIG_PATH
-
-Make and install the vmod::
- 
- make           # builds the vmod
- make install   # installs your vmod in `VMODDIR`
- make check     # runs the unit tests in ``src/tests/*.vtc``
- 
-The libvmod-vsthrottle vmod will now be available in your VMODDIR and
-can be copied to other systems as required.
-
- 
 USAGE
 =====
 
@@ -122,5 +85,4 @@ In your VCL you can now use this vmod along the following lines::
         		# Client has exceeded 15 reqs per 10s
         		return (synth(429, "Too Many Requests"));
         	}
-        } 
-
+        }

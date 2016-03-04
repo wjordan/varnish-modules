@@ -6,11 +6,6 @@ vmod_xkey
 Varnish surrogate keys Module (xkey)
 ------------------------------------
 
-:Author: Martin Blix Grydeland, Per Buer
-:Date: 2015-09-30
-:Version: 1.0
-:Manual section: 3
-
 SYNOPSIS
 ========
 
@@ -138,26 +133,3 @@ Description
 	A softpurge differs from a regular purge in that it resets an
 	object's TTL but keeps it available for grace mode and conditional
 	requests for the remainder of its configured grace and keep time.
-
-INSTALLATION
-============
-
-The module can be installed on latest Varnish Cache using standard autotools::
-
-    ./configure
-    make
-    make install
-
-Header files must be installed.
-
-This module is made to work on the latest released Varnish Cache version.
-Support for older versions is explicitly not a priority.
-
-
-COPYRIGHT
-=========
-
-This document is licensed under the same license as the
-libvmod-xkey project. See LICENSE for details.
-
-* Copyright (c) 2015 Varnish Software Group
