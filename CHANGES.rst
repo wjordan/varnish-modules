@@ -1,7 +1,7 @@
-This is a running log of changes to varnish-vmods.
+This is a running log of changes to varnish-modules.
 
-varnish-vmods 0.9.1 (unreleased)
---------------------------------
+varnish-modules 0.9.1 (unreleased)
+----------------------------------
 
 Initial release. This package contains the source files extracted from
 the following git repositories and commit identifiers:

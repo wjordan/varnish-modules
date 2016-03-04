@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 AC_COPYRIGHT([Copyright (c) 2016 Varnish Software Group])
-AC_INIT([varnish-vmods], [0.9.1-dev])
+AC_INIT([varnish-modules], [0.9.1-dev])
 AC_CONFIG_MACRO_DIR([m4])
 m4_ifndef([VARNISH_VMOD_INCLUDES], AC_MSG_ERROR([Need varnish.m4 -- see README.rst]))
 AM_CONFIG_HEADER(config.h)

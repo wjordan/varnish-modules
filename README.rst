@@ -1,4 +1,4 @@
-Varnish module collectino by Varnish Software
+Varnish module collection by Varnish Software
 =============================================
 
 This is a collection of modules ("vmods") extending Varnish VCL used for
@@ -60,7 +60,7 @@ separate documents in `docs/`. For completeness, here is a snippet from
 Development
 -----------
 
-The source git tree lives on github: https://github.com/varnish/varnish-vmods
+The source git tree lives on Github: https://github.com/varnish/varnish-modules
 
 All source code is placed in the master git branch. Pull requests and issue
 reporting are appreciated.
@@ -71,9 +71,9 @@ Administrativa
 
 The goals of this collection are:
 
-* Simplify access to vmod code for Varnish users. One package to install, not 19.
-* Decrease the maintenance cost that comes with having 10 different git repos,
-  each with autotools and (previously) package definition files.
+* Simplify access to vmod code for Varnish users. One package to install, not 6.
+* Decrease the maintenance cost that comes with having 10 different git
+  repositories, each with autotools and (previously) distribution packaging files.
 
 Expressed non-goals are:
 
