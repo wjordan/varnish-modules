@@ -8,6 +8,7 @@ Build-Depends:
  libvarnishapi-dev (>= 4.1.2~),
  pkg-config,
  python3-docutils,
+ varnish,
 Standards-Version: 3.9.7
 Homepage: https://github.com/varnish/varnish-modules
 #Vcs-Git: git://anonscm.debian.org/pkg-varnish/varnish-modules.git
