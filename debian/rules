@@ -12,8 +12,8 @@ rstfiles  = $(wildcard docs/*.man.rst)
 %:
 	dh $@  --with autotools_dev
 
-override_dh_installmanpages: $(manpages)
-	dh_installmanpages
+override_dh_installman: $(manpages)
+	dh_installman
 
 $(mandir)/%.3: docs/%.man.rst
 	rst2man $< $@
