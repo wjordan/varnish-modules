@@ -2,7 +2,12 @@ Source: varnish-modules
 Section: web
 Priority: optional
 Maintainer: Stig Sandbeck Mathisen <ssm@debian.org>
-Build-Depends: debhelper (>=9),autotools-dev
+Build-Depends:
+ autotools-dev,
+ debhelper (>=9),
+ libvarnishapi-dev (>= 4.1.2~),
+ pkg-config,
+ python3-docutils,
 Standards-Version: 3.9.7
 Homepage: https://github.com/varnish/varnish-modules
 #Vcs-Git: git://anonscm.debian.org/pkg-varnish/varnish-modules.git
