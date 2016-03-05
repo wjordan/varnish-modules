@@ -1,0 +1,3 @@
+version=4
+https://github.com/varnish/varnish-modules/tags \
+  /varnish/varnish-modules/archive/varnish-modules-(\d[\d.]*)\.tar\.gz debian uupdate
