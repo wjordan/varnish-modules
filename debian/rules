@@ -24,4 +24,4 @@ debian/substvars:
 	echo "Varnish:ABI=$(VMOD_ABI)" > $@
 
 $(mandir)/%.3: docs/%.man.rst
-	rst2man $< $@
+	rst2man --report=error $< $@
