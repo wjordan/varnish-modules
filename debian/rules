@@ -3,6 +3,17 @@
 # output every command that modifies files on the build system.
 export DH_VERBOSE = 1
 
+mandir   := debian/varnish-modules/usr/share/man/man3
+
+manpages  = $(foreach page,$(mandir)/$(page),$(pages))
+pages     = $(patsubst docs/%.man.rst,%,$(rstfiles))
+rstfiles  = $(wildcard docs/*.man.rst)
+
 %:
 	dh $@  --with autotools_dev
 
+override_dh_installmanpages: $(manpages)
+	dh_installmanpages
+
+$(mandir)/%.3: docs/%.man.rst
+	rst2man $< $@
