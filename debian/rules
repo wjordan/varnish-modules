@@ -3,9 +3,9 @@
 # output every command that modifies files on the build system.
 # export DH_VERBOSE = 1
 
-mandir   = debian/varnish-modules/usr/share/man/man3
-manpages = $(patsubst docs/%.rst,$(mandir)/%.3,$(rstfiles))
-rstfiles = $(filter %.man.rst,$(wildcard docs/*.rst))
+mandir   := debian/varnish-modules/usr/share/man/man3
+manpages = $(patsubst docs/%.rst,$(mandir)/vmod_%.3,$(rstfiles))
+rstfiles := $(filter-out docs/nonstandard-location.rst docs/vmod_% docs/%.man.rst,$(wildcard docs/*.rst))
 
 VMOD_ABI = $(shell printf '\#include "vrt.h"\nvarnishabi- VRT_MAJOR_VERSION . VRT_MINOR_VERSION\n' \
         | cpp - $(shell pkg-config --cflags varnishapi) \
