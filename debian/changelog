@@ -2,4 +2,4 @@ varnish-modules (0.9.0-1) unstable; urgency=medium
 
   * Initial release (Closes: #816846)
 
- -- Stig Sandbeck Mathisen <ssm@debian.org>  Sat, 05 Mar 2016 10:17:27 +0100
+ -- Stig Sandbeck Mathisen <ssm@debian.org>  Sun, 06 Mar 2016 10:47:30 +0100
