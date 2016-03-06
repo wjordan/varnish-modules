@@ -12,7 +12,7 @@ VMOD_ABI = $(shell printf '\#include "vrt.h"\nvarnishabi- VRT_MAJOR_VERSION . VR
         | sed -e '/^varnishabi-/!d' -e 's/U//g' -e 's/ //g')
 
 %:
-	dh $@  --with autotools_dev
+	dh $@  --parallel --with autotools_dev
 
 override_dh_gencontrol: debian/substvars
 	dh_gencontrol -- -Tdebian/substvars
