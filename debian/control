@@ -1,7 +1,9 @@
 Source: varnish-modules
 Section: web
 Priority: optional
-Maintainer: Stig Sandbeck Mathisen <ssm@debian.org>
+Maintainer: Varnish Package Maintainers <pkg-varnish-devel@lists.alioth.debian.org>
+Uploaders:
+ Stig Sandbeck Mathisen <ssm@debian.org>,
 Build-Depends:
  autotools-dev,
  debhelper (>=9),
