@@ -1,4 +1,4 @@
-AM_CPPFLAGS = @VMOD_INCLUDES@ -I$(top_srcdir)/src/foreign -Wall -Werror -Wunused-parameter
+AM_CPPFLAGS = @VMOD_INCLUDES@ -I$(top_srcdir)/src/foreign -Wall -Werror -Wunused-parameter -Wmissing-prototypes
 
 
 vmoddir = @VMOD_DIR@

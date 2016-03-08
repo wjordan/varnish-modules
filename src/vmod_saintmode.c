@@ -124,6 +124,8 @@ vmod_blacklist(VRT_CTX, struct vmod_priv *priv, VCL_DURATION expires) {
 	pthread_mutex_unlock(&sm->mtx);
 }
 
+unsigned healthy(const struct director *, const struct busyobj *, double *);
+
 /* All adapted from PHK's saintmode implementation in Varnish 3.0 */
 unsigned __match_proto__(vdi_healthy_f)
 healthy(const struct director *dir, const struct busyobj *bo, double *changed) {
