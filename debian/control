@@ -13,8 +13,8 @@ Build-Depends:
  varnish,
 Standards-Version: 3.9.7
 Homepage: https://github.com/varnish/varnish-modules
-#Vcs-Git: git://anonscm.debian.org/pkg-varnish/varnish-modules.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/pkg-varnish/varnish-modules.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-varnish/varnish-modules.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-varnish/varnish-modules.git
 
 Package: varnish-modules
 Architecture: any
