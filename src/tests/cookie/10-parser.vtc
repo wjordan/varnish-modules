@@ -6,7 +6,7 @@ server s1 -repeat 5 {
 } -start
 
 varnish v1 -vcl+backend {
-	import cookie from "${vmod_topbuild}/src/.libs/libvmod_cookie.so";
+	import cookie from "${vmod_builddir}/.libs/libvmod_cookie.so";
 	sub vcl_deliver {
  		cookie.parse(req.http.cookie);
 		set resp.http.X-foo = cookie.get_string();

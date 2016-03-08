@@ -6,7 +6,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import softpurge from "${vmod_topbuild}/src/.libs/libvmod_softpurge.so";
+	import softpurge from "${vmod_builddir}/.libs/libvmod_softpurge.so";
 
 } -start
 

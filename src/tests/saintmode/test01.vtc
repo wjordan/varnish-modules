@@ -30,7 +30,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import saintmode from "${vmod_topbuild}/src/.libs/libvmod_saintmode.so";
+	import saintmode from "${vmod_builddir}/.libs/libvmod_saintmode.so";
 
 	sub vcl_init {
 		new sm = saintmode.saintmode(s1, 3);

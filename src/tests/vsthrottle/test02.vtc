@@ -6,7 +6,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import vsthrottle from "${vmod_topbuild}/src/.libs/libvmod_vsthrottle.so";
+	import vsthrottle from "${vmod_builddir}/.libs/libvmod_vsthrottle.so";
 
 	sub vcl_backend_response {
 		if (!vsthrottle.is_denied("foo", 1, 1s)) {

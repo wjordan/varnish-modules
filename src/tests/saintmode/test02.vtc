@@ -23,8 +23,8 @@ server s2 {
 } -start
 
 varnish v1 -vcl+backend {
-	import saintmode from "${vmod_topbuild}/src/.libs/libvmod_saintmode.so";
-	import directors from "${vmoddir}/libvmod_directors.so";
+	import saintmode from "${vmod_builddir}/.libs/libvmod_saintmode.so";
+	import ${vmod_directors};
 
 	sub vcl_init {
 		new sm1 = saintmode.saintmode(s1, 5);

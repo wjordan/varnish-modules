@@ -6,7 +6,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import tcp from "${vmod_topbuild}/src/.libs/libvmod_tcp.so";
+	import tcp from "${vmod_builddir}/.libs/libvmod_tcp.so";
 
 	sub vcl_deliver {
 		set resp.http.a = tcp.get_estimated_rtt();

@@ -8,7 +8,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import var from "${vmod_topbuild}/src/.libs/libvmod_var.so";
+	import var from "${vmod_builddir}/.libs/libvmod_var.so";
 
 	sub vcl_deliver {
 		if (req.restarts == 0 && req.url == "/a") {

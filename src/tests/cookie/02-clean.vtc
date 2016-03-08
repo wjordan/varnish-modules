@@ -6,7 +6,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import cookie from "${vmod_topbuild}/src/.libs/libvmod_cookie.so";
+	import cookie from "${vmod_builddir}/.libs/libvmod_cookie.so";
 
 	sub vcl_recv {
 		cookie.clean();

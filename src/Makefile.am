@@ -1,6 +1,5 @@
 AM_CPPFLAGS = @VMOD_INCLUDES@ -I$(top_srcdir)/src/foreign -Wall -Werror -Wunused-parameter -Wmissing-prototypes
 
-
 vmoddir = @VMOD_DIR@
 vmod_LTLIBRARIES = libvmod_cookie.la \
 	libvmod_header.la \
@@ -63,7 +62,7 @@ VMOD_TESTS = $(top_srcdir)/src/tests/*/*.vtc
 .PHONY: $(VMOD_TESTS)
 
 $(top_srcdir)/src/tests/*/*.vtc:
-	@VARNISHTEST@ -Dvmoddir=$(vmoddir) -Dvarnishd=@VARNISHD@ -Dvmod_topbuild=$(abs_top_builddir) $@
+	@VARNISHTEST@ -Dvmoddir=$(vmoddir) -Dvarnishd=@VARNISHD@ -Dvmod_builddir=$(abs_top_builddir)/src -Dvmod_directors="directors from \"$(vmoddir)/libvmod_directors.so\"" $@
 
 check: $(VMOD_TESTS)
 

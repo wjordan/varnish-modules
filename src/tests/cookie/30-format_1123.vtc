@@ -7,7 +7,7 @@ server s1 {
 
 
 varnish v1 -vcl+backend {
-	import cookie from "${vmod_topbuild}/src/.libs/libvmod_cookie.so";
+	import cookie from "${vmod_builddir}/.libs/libvmod_cookie.so";
 
 	sub vcl_deliver {
 		set resp.http.x-date = cookie.format_rfc1123(now, 1d);

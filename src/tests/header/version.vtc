@@ -11,7 +11,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import header from "${vmod_topbuild}/src/.libs/libvmod_header.so";
+	import header from "${vmod_builddir}/.libs/libvmod_header.so";
 
 	sub vcl_backend_response {
 		set beresp.http.x-version = header.version();
