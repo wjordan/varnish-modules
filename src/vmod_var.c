@@ -143,6 +143,8 @@ vmod_get_string(const struct vrt_ctx *ctx, struct vmod_priv *priv,
     VCL_STRING name)
 {
 	struct var *v;
+	(void)ctx;
+
 	if (name == NULL)
 		return (NULL);
 	v = vh_get_var(get_vh(priv), name);
@@ -170,6 +172,8 @@ VCL_IP
 vmod_get_ip(const struct vrt_ctx *ctx, struct vmod_priv *priv, VCL_STRING name)
 {
 	struct var *v;
+	(void)ctx;
+
 	if (name == NULL)
 		return (NULL);
 	v = vh_get_var(get_vh(priv), name);
@@ -202,6 +206,7 @@ vmod_get_##vcl_type_l(const struct vrt_ctx *ctx, struct vmod_priv *priv,\
     const char *name)							\
 {									\
 	struct var *v;							\
+	(void)ctx;							\
 									\
 	if (name == NULL)						\
 		return 0;						\
@@ -220,6 +225,7 @@ VCL_VOID
 vmod_clear(const struct vrt_ctx *ctx, struct vmod_priv *priv)
 {
 	struct var_head *vh;
+	(void)ctx;
 	vh = get_vh(priv);
 	vh_init(vh);
 }
@@ -228,6 +234,7 @@ VCL_VOID
 vmod_global_set(const struct vrt_ctx *ctx, VCL_STRING name, VCL_STRING value)
 {
 	struct var *v;
+	(void)ctx;
 
 	if (name == NULL)
 		return;
