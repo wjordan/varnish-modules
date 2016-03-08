@@ -1,4 +1,5 @@
-AM_CPPFLAGS = @VMOD_INCLUDES@ -I$(top_srcdir)/src/foreign -Wall -Werror
+AM_CPPFLAGS = @VMOD_INCLUDES@ -I$(top_srcdir)/src/foreign -Wall -Werror -Wunused-parameter
+
 
 vmoddir = @VMOD_DIR@
 vmod_LTLIBRARIES = libvmod_cookie.la \
