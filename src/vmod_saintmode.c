@@ -68,6 +68,7 @@ VCL_BACKEND __match_proto__(td_saintmode_saintmode_backend)
 vmod_saintmode_backend(VRT_CTX, struct vmod_saintmode_saintmode *sm) {
 	CHECK_OBJ_NOTNULL(sm, VMOD_SAINTMODE_MAGIC);
 	CHECK_OBJ_NOTNULL(sm->sdir, DIRECTOR_MAGIC);
+	(void)ctx;
 	return (sm->sdir);
 }
 
@@ -183,6 +184,7 @@ resolve(const struct director *dir, struct worker *wrk, struct busyobj *bo) {
 
 	CHECK_OBJ_NOTNULL(dir, DIRECTOR_MAGIC);
 	CAST_OBJ_NOTNULL(sm, dir->priv, VMOD_SAINTMODE_MAGIC);
+	(void)wrk;
 
 	if (!healthy(dir, bo, &changed))
 		return (NULL);
@@ -196,6 +198,7 @@ vmod_saintmode__init(VRT_CTX, struct vmod_saintmode_saintmode **smp,
     VCL_INT threshold) {
 	struct vmod_saintmode_saintmode *sm;
 	struct saintmode_objs *sm_objs;
+	(void)ctx;
 
 	AN(smp);
 	AZ(*smp);
