@@ -57,6 +57,13 @@ PKG_CHECK_VAR([LIBVARNISHAPI_BINDIR], [varnishapi], [bindir])
 PKG_CHECK_VAR([LIBVARNISHAPI_SBINDIR], [varnishapi], [sbindir])
 AC_SUBST([LIBVARNISHAPI_DATAROOTDIR])
 
+PKG_CHECK_VAR([VARNISH_PLUS], [varnishapi], [varnish_plus],
+  [
+    AC_DEFINE([VARNISH_PLUS], [true], [Varnish Plus build])
+    AC_SUBST([VARNISH_PLUS], [true])
+  ], [])
+
+
 # Varnish include files tree
 VARNISH_VMOD_INCLUDES
 VARNISH_VMOD_DIR

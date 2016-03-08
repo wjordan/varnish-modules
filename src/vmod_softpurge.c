@@ -2,6 +2,7 @@
 #include "vcl.h"
 #include "cache/cache.h"
 #include "hash/hash_slinger.h"
+#include "config.h"
 
 #include "vcc_softpurge_if.h"
 
@@ -21,6 +22,7 @@ vmod_softpurge(VRT_CTX)
 	}
 
 	CHECK_OBJ_NOTNULL(ctx->req, REQ_MAGIC);
+	CHECK_OBJ_NOTNULL(ctx->req->wrk, WORKER_MAGIC);
 	oh = ctx->req->objcore->objhead;
 	CHECK_OBJ_NOTNULL(oh, OBJHEAD_MAGIC);
 	spc = WS_Reserve(ctx->ws, 0);
@@ -49,8 +51,14 @@ vmod_softpurge(VRT_CTX)
 	for (n = 0; n < nobj; n++) {
 		oc = ocp[n];
 		CHECK_OBJ_NOTNULL(oc, OBJCORE_MAGIC);
+#ifdef VARNISH_PLUS
+		/* Varnish Plus interface for EXP_Rearm() is different. */
+		EXP_Rearm(ctx->req->wrk, oc, now, 0, oc->exp.grace, oc->exp.keep);
+#else
 		EXP_Rearm(oc, now, 0, oc->exp.grace, oc->exp.keep);
+#endif
 		(void)HSH_DerefObjCore(ctx->req->wrk, &oc);
+
 	}
 	WS_Release(ctx->ws, 0);
 }

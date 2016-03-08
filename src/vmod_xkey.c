@@ -34,6 +34,7 @@
 #include "vrt.h"
 #include "cache/cache.h"
 #include "vsha256.h"
+#include "config.h"
 
 #include "vtree.h"
 
@@ -485,6 +486,8 @@ purge(VRT_CTX, VCL_STRING key, VCL_INT do_soft)
 	int i;
 
 	CHECK_OBJ_NOTNULL(ctx, VRT_CTX_MAGIC);
+	CHECK_OBJ_NOTNULL(ctx->req, REQ_MAGIC);
+	CHECK_OBJ_NOTNULL(ctx->req->wrk, WORKER_MAGIC);
 
 	if (!key || !*key)
 		return (0);
@@ -507,12 +510,23 @@ purge(VRT_CTX, VCL_STRING key, VCL_INT do_soft)
 		if (do_soft &&
 		    oc->objcore->exp.ttl <= (ctx->now - oc->objcore->exp.t_origin))
 			continue;
+#ifdef VARNISH_PLUS
+		/* Varnish Plus interface for EXP_Rearm() is different. */
+		if (do_soft)
+			EXP_Rearm(ctx->req->wrk, oc->objcore, ctx->now, 0,
+			    oc->objcore->exp.grace, oc->objcore->exp.keep);
+		else
+			EXP_Rearm(ctx->req->wrk, oc->objcore, oc->objcore->exp.t_origin, 0,
+			    0, 0);
+#else
 		if (do_soft)
 			EXP_Rearm(oc->objcore, ctx->now, 0,
 			    oc->objcore->exp.grace, oc->objcore->exp.keep);
 		else
 			EXP_Rearm(oc->objcore, oc->objcore->exp.t_origin, 0,
 			    0, 0);
+#endif
+
 		i++;
 	}
 	AZ(pthread_mutex_unlock(&mtx));
