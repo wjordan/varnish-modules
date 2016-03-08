@@ -159,6 +159,7 @@ VCL_BOOL
 vmod_isset(VRT_CTX, struct vmod_priv *priv, const char *name) {
 	struct vmod_cookie *vcp = cobj_get(priv);
 	CHECK_OBJ_NOTNULL(vcp, VMOD_COOKIE_MAGIC);
+	(void)ctx;
 
 	if (name == NULL || strlen(name) == 0)
 		return(0);
@@ -177,6 +178,7 @@ VCL_STRING
 vmod_get(VRT_CTX, struct vmod_priv *priv, VCL_STRING name) {
 	struct vmod_cookie *vcp = cobj_get(priv);
 	CHECK_OBJ_NOTNULL(vcp, VMOD_COOKIE_MAGIC);
+	(void)ctx;
 
 	if (name == NULL || strlen(name) == 0)
 		return(NULL);
@@ -196,6 +198,7 @@ VCL_VOID
 vmod_delete(VRT_CTX, struct vmod_priv *priv, VCL_STRING name) {
 	struct vmod_cookie *vcp = cobj_get(priv);
 	CHECK_OBJ_NOTNULL(vcp, VMOD_COOKIE_MAGIC);
+	(void)ctx;
 
 	if (name == NULL || strlen(name) == 0)
 		return;
@@ -215,8 +218,9 @@ VCL_VOID
 vmod_clean(VRT_CTX, struct vmod_priv *priv) {
 	struct vmod_cookie *vcp = cobj_get(priv);
 	CHECK_OBJ_NOTNULL(vcp, VMOD_COOKIE_MAGIC);
-	AN(&vcp->cookielist);
+	(void)ctx;
 
+	AN(&vcp->cookielist);
 	VTAILQ_INIT(&vcp->cookielist);
 }
 
@@ -228,6 +232,8 @@ vmod_filter_except(VRT_CTX, struct vmod_priv *priv, VCL_STRING whitelist_s) {
 	int whitelisted = 0;
 	struct vmod_cookie *vcp = cobj_get(priv);
 	struct whitelist *whentry;
+
+	(void)ctx;
 
 	VTAILQ_HEAD(, whitelist) whitelist_head;
 	VTAILQ_INIT(&whitelist_head);
