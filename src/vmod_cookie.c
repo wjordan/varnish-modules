@@ -265,7 +265,7 @@ vmod_filter_except(VRT_CTX, struct vmod_priv *priv, VCL_STRING whitelist_s) {
 	}
 
 	/* Filter existing cookies that isn't in the whitelist. */
-	VTAILQ_FOREACH(cookieptr, &vcp->cookielist, list) {
+	VTAILQ_FOREACH_SAFE(cookieptr, &vcp->cookielist, list, safeptr) {
 		CHECK_OBJ_NOTNULL(cookieptr, VMOD_COOKIE_ENTRY_MAGIC);
 		whitelisted = 0;
 		VTAILQ_FOREACH(whentry, &whitelist_head, list) {
@@ -301,6 +301,8 @@ vmod_get_string(VRT_CTX, struct vmod_priv *priv) {
 
 	VTAILQ_FOREACH(curr, &vcp->cookielist, list) {
 		CHECK_OBJ_NOTNULL(curr, VMOD_COOKIE_ENTRY_MAGIC);
+		AN(curr->name);
+		AN(curr->value);
 		VSB_printf(output, "%s%s=%s;",
 		    (curr == VTAILQ_FIRST(&vcp->cookielist)) ? "" : " ",
 		    curr->name, curr->value);
