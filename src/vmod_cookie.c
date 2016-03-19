@@ -74,9 +74,6 @@ vmod_parse(VRT_CTX, struct vmod_priv *priv, VCL_STRING cookieheader) {
 		return;
 	}
 
-	// VSLb(ctx->vsl, SLT_Debug, "cookie: cookie string is %lu bytes: %s",
-	//    strlen(cookieheader), cookieheader);
-
 	if (!VTAILQ_EMPTY(&vcp->cookielist)) {
 		/* If called twice during the same request, clean out old state */
 		vmod_clean(ctx, priv);
@@ -102,8 +99,6 @@ vmod_parse(VRT_CTX, struct vmod_priv *priv, VCL_STRING cookieheader) {
 		if (sep != '\0')
 			p = sep + 1;
 
-		// VSLb(ctx->vsl, SLT_Debug, "name(%lu)=%s value(%lu)=\"%s\" ",
-		//   strlen(name), name, strlen(value), value);
 		vmod_set(ctx, priv, name, value);
 		free(name);
 		free(value);
@@ -267,7 +262,6 @@ vmod_filter_except(VRT_CTX, struct vmod_priv *priv, VCL_STRING whitelist_s) {
 		AN(whentry);
 		whentry->name = strndup(p, q-p);
 		AN(whentry->name);
-		VSLb(ctx->vsl, SLT_Debug, "cookie: p is %s -- name: %s", p, whentry->name);
 
 		VTAILQ_INSERT_TAIL(&whitelist_head, whentry, list);
 
