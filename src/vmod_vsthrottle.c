@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2013-2015 Varnish Software Group
+ * Copyright (c) 2013-2015 Varnish Software
  * All rights reserved.
  *
  * Author: Dag Haavi Finstad <daghf@varnish-software.com>

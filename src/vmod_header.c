@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2011-2013 Varnish Software AS
+ * Copyright (c) 2011-2013 Varnish Software
  * All rights reserved.
  *
  * Author: Kristian Lyngstol <kristian@bohemians.org>
