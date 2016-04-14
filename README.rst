@@ -28,11 +28,13 @@ development files.
 
 Source code is built with autotools::
 
-    apt-get install libvarnishapi-dev || yum install varnish-libs-devel
+    sudo apt-get install libvarnishapi-dev || sudo yum install varnish-libs-devel
     ./bootstrap
     ./configure
-    make check
-    make install
+    make
+    make check   # optional
+    sudo make install
+
 
 The resulting loadable modules (``libvmod_foo*.so`` files) will be installed to
 the Varnish module directory. (default `/var/lib/varnish/vmods/`)
