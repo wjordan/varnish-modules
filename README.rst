@@ -23,13 +23,18 @@ is the last public Varnish Cache release.
 Installation
 ------------
 
+Source releases can be downloaded from:
+
+    https://download.varnish-software.com/varnish-modules/
+
+
 Installation requires an installed version of Varnish Cache, including the
 development files.
 
 Source code is built with autotools::
 
     sudo apt-get install libvarnishapi-dev || sudo yum install varnish-libs-devel
-    ./bootstrap
+    ./bootstrap   # If running from git.
     ./configure
     make
     make check   # optional
@@ -42,7 +47,6 @@ the Varnish module directory. (default `/var/lib/varnish/vmods/`)
 
 Usage
 -----
-
 
 Each module has a different set of functions and usage, described in
 separate documents in `docs/`. For completeness, here is a snippet from
@@ -66,7 +70,6 @@ The source git tree lives on Github: https://github.com/varnish/varnish-modules
 
 All source code is placed in the master git branch. Pull requests and issue
 reporting are appreciated.
-
 
 Administrativa
 --------------
