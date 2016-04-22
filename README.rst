@@ -17,7 +17,8 @@ This collection contains the following vmods (previously kept individually):
 cookie, vsthrottle, header, saintmode, softpurge, tcp, var, xkey
 
 Supported Varnish version is described in the `CHANGES.rst` file. Normally this
-is the last public Varnish Cache release.
+is the last public Varnish Cache release. See PORTING below for information on
+support for other versions of Varnish.
 
 
 Installation
@@ -71,6 +72,16 @@ The source git tree lives on Github: https://github.com/varnish/varnish-modules
 All source code is placed in the master git branch. Pull requests and issue
 reporting are appreciated.
 
+Porting
+-------
+
+We encourage porting of the module package to other versions of Varnish Cache.
+
+Nils Goroll has a git tree adopted to Varnish git master, which can be found
+on: https://github.com/nigoroll/varnish-modules/
+
+
+
 Administrativa
 --------------
 
@@ -89,9 +100,6 @@ Expressed non-goals are:
 
 Addition of further vmods is decided on a case-by-case basis. Code quality and
 maintenance requirements will be important in this decision.
-
-We encourage porting efforts to older Varnish Cache versions, if someone wants
-to do that. (and maintain it!)
 
 
 Contact
