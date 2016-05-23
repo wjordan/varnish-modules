@@ -9,7 +9,7 @@ Build-Depends: autotools-dev,
                pkg-config,
                python3-docutils,
                varnish
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-varnish/varnish-modules.git
 Vcs-Git: https://anonscm.debian.org/git/pkg-varnish/varnish-modules.git
 Homepage: https://github.com/varnish/varnish-modules
