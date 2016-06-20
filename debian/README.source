@@ -1,0 +1,26 @@
+Importing new upstream versions
+-------------------------------
+
+After each new upstream version, you may track changes in copyright with:
+
+    licensecheck --copyright -r $(find * -type f) |
+    /usr/lib/cdbs/licensecheck2dep5 > debian/copyright.auto
+
+Dependency on Varnish ABI version
+---------------------------------
+
+Varnish has an ABI version this package must match.  This is done via
+a virtual package called "varnishabi-<abiversion>".
+
+The varnish package provides this virtual package. A "Provides:
+varnishabi-<abiversion>" header is added for dependencies.
+
+This vmod package gets the ABI version from "libvarnishapi-dev" during
+packaging (see debian/rules). The Depends: header in debian/control
+contains a "${Varnish:ABI}" string which is replaced by the virtual
+package name.
+
+If a new varnish version bumps the ABI version, this package needs to
+be rebuilt.
+
+ -- Stig Sandbeck Mathisen <ssm@debian.org>, Sat,  5 Mar 2016 21:49:42 +0100

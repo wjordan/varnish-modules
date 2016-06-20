@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+# export DH_VERBOSE = 1
+
+mandir   := debian/varnish-modules/usr/share/man/man3
+manpages = $(patsubst docs/%.rst,$(mandir)/vmod_%.3,$(rstfiles))
+rstfiles := $(filter-out docs/nonstandard-location.rst docs/vmod_% docs/%.man.rst,$(wildcard docs/*.rst))
+
+VMOD_ABI = $(shell printf '\#include "vrt.h"\nvarnishabi- VRT_MAJOR_VERSION . VRT_MINOR_VERSION\n' \
+        | cpp - $(shell pkg-config --cflags varnishapi) \
+        | sed -e '/^varnishabi-/!d' -e 's/U//g' -e 's/ //g')
+
+%:
+	dh $@  --parallel --with autotools_dev
+
+override_dh_gencontrol: debian/substvars
+	dh_gencontrol -- -Tdebian/substvars
+
+override_dh_installman: $(manpages)
+	dh_installman
+
+debian/substvars:
+	echo "Varnish:ABI=$(VMOD_ABI)" > $@
+
+$(mandir)/vmod_%.3: docs/%.rst
+	rst2man --report=error $< $@

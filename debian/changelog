@@ -1,0 +1,22 @@
+varnish-modules (0.9.0-3) unstable; urgency=medium
+
+  * Declare compliance with Debian policy 3.9.8
+  * autopkgtest with serverspec
+
+ -- Stig Sandbeck Mathisen <ssm@debian.org>  Mon, 23 May 2016 23:31:01 +0200
+
+varnish-modules (0.9.0-2) unstable; urgency=medium
+
+  * [52c0d1e] Set team as maintainer
+  * [1243692] Add Vcs-* URLs
+  * [20b6824] Let "cme" fix things
+  * [4513868] Import format string patch.
+    Thanks to Aaron M. Ucko (Closes: #817169)
+
+ -- Stig Sandbeck Mathisen <ssm@debian.org>  Tue, 08 Mar 2016 20:16:00 +0100
+
+varnish-modules (0.9.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #816846)
+
+ -- Stig Sandbeck Mathisen <ssm@debian.org>  Sun, 06 Mar 2016 10:47:30 +0100
