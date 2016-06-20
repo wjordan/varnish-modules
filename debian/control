@@ -1,6 +1,6 @@
 Source: varnish-modules
 Maintainer: Varnish Package Maintainers <pkg-varnish-devel@lists.alioth.debian.org>
-Uploaders: Stig Sandbeck Mathisen <ssm@debian.org>
+Uploaders: Will Jordan <will@code.org>
 Section: web
 Priority: optional
 Build-Depends: autotools-dev,
@@ -10,8 +10,8 @@ Build-Depends: autotools-dev,
                python3-docutils,
                varnish
 Standards-Version: 3.9.8
-Vcs-Browser: https://anonscm.debian.org/cgit/pkg-varnish/varnish-modules.git
-Vcs-Git: https://anonscm.debian.org/git/pkg-varnish/varnish-modules.git
+Vcs-Browser: https://github.com/wjordan/varnish-modules.git
+Vcs-Git: https://github.com/wjordan/varnish-modules.git
 Homepage: https://github.com/varnish/varnish-modules
 
 Package: varnish-modules
